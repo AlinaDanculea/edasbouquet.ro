@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDA's Bouquet — Variante de design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E1B22; --ink-2:#161318; --soft:#9b929f;
+  --blush:#D9A6B2; --rose:#C0788B; --petal:#EAC8D1;
+  --cream:#F4ECDD;
+  --serif:"Cormorant Garamond",serif;
+  --sans:"Jost",sans-serif;
+  --script:"Pinyon Script",cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--ink-2);color:var(--cream);font-weight:300;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.head{text-align:center;padding:84px 0 56px}
+.head .brand{font-family:var(--serif);font-size:34px;letter-spacing:.16em;display:inline-flex;gap:9px;align-items:baseline}
+.head .brand b{font-weight:500}
+.head .brand i{font-family:var(--script);font-style:normal;font-size:38px;color:var(--petal);letter-spacing:0}
+.head .eyebrow{font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--blush);margin-bottom:24px}
+.head h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,5vw,60px);line-height:1.05;margin:34px auto 16px;max-width:18ch}
+.head h1 em{font-style:italic;color:var(--blush)}
+.head p{color:var(--soft);font-size:17px;line-height:1.7;max-width:54ch;margin:0 auto}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:20px 0 90px}
+.card{background:var(--ink);border:1px solid rgba(234,200,209,.14);border-radius:6px;overflow:hidden;transition:.45s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px);border-color:var(--blush)}
+.card .shot{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--ink-2)}
+.card .shot img{width:100%;height:100%;object-fit:cover;transition:1s ease}
+.card:hover .shot img{transform:scale(1.06)}
+.card .shot .tag{position:absolute;top:14px;left:14px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:rgba(22,19,24,.8);backdrop-filter:blur(6px);border:1px solid rgba(234,200,209,.3);padding:7px 13px;border-radius:30px;color:var(--cream)}
+.card .body{padding:28px 26px 30px;flex:1;display:flex;flex-direction:column}
+.card .body .v{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose)}
+.card .body h2{font-family:var(--serif);font-weight:400;font-size:30px;margin:10px 0 10px;line-height:1.05}
+.card .body p{color:var(--soft);font-size:15px;line-height:1.65;flex:1}
+.card .body .go{margin-top:22px;display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);padding:13px 22px;border:1px solid var(--blush);border-radius:30px;align-self:flex-start;transition:.35s}
+.card:hover .body .go{background:var(--blush);color:var(--ink)}
+.foot{text-align:center;padding:0 0 70px;color:var(--soft);font-size:14px;letter-spacing:.04em}
+.foot span{font-family:var(--script);font-size:24px;color:var(--petal)}
+@media(max-width:900px){.grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div class="eyebrow">Florăria · Onești, jud. Bacău</div>
+    <a class="brand" href="#"><b>EDA's</b> <i>Bouquet</i></a>
+    <h1 class="serif">Trei direcții de design pentru <em>site-ul de prezentare</em></h1>
+    <p>Aceeași poveste, trei atmosfere diferite. Deschide fiecare variantă, plimbă-te prin ea și spune-mi care ți se potrivește — sau ce vrei să combinăm din fiecare.</p>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="EDA's Bouquet - Editorial Noir.html">
+      <div class="shot"><img src="https://images.unsplash.com/photo-1457089328109-e5d9bd499191?w=800&q=80" alt=""><span class="tag">Varianta A</span></div>
+      <div class="body">
+        <span class="v">Editorial Noir</span>
+        <h2 class="serif">Întunecat &amp; dramatic</h2>
+        <p>Antracit dominant, imagini full-bleed, tipografie serif suplă. Atmosferă premium, de revistă — elegantă și memorabilă.</p>
+        <span class="go">Deschide varianta →</span>
+      </div>
+    </a>
+
+    <a class="card" href="EDA's Bouquet - Blush Atelier.html">
+      <div class="shot"><img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=800&q=80" alt=""><span class="tag">Varianta B</span></div>
+      <div class="body">
+        <span class="v">Blush Atelier</span>
+        <h2 class="serif">Luminos &amp; romantic</h2>
+        <p>Crem și roz-pudrat, multă respirație, galerie delicată. Cald, feminin și aerisit — perfect pentru o florărie de buchete.</p>
+        <span class="go">Deschide varianta →</span>
+      </div>
+    </a>
+
+    <a class="card" href="EDA's Bouquet - Modern Botanical.html">
+      <div class="shot"><img src="https://images.unsplash.com/photo-1469259943454-aa100abba749?w=800&q=80" alt=""><span class="tag">Varianta C</span></div>
+      <div class="body">
+        <span class="v">Modern Botanical</span>
+        <h2 class="serif">Contemporan &amp; îndrăzneț</h2>
+        <p>Tipografie supradimensionată, layout asimetric, carduri suprapuse și alternanță antracit/crem. Feel de studio de design.</p>
+        <span class="go">Deschide varianta →</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="foot"><span>Mulțumesc</span><br>Logo &amp; paletă derivate din identitatea EDA's Bouquet</div>
+</div>
+</body>
+</html>

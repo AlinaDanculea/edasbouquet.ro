@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDA's Bouquet — Atelier Floral · Onești</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Grotesk:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E1B22; --ink-2:#171419; --ink-soft:#8A8190;
+  --blush:#D9A6B2; --rose:#C0788B; --petal:#EAC8D1;
+  --cream:#F4ECDD; --paper:#F7F1E8;
+  --line-d:rgba(234,200,209,.18); --line-l:rgba(30,27,34,.13);
+  --serif:"Cormorant Garamond",serif;
+  --sans:"Space Grotesk",sans-serif;
+  --script:"Pinyon Script",cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 44px}
+.mono{font-family:var(--sans);font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.serif{font-family:var(--serif)}
+.script{font-family:var(--script)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.45s ease;padding:24px 0;mix-blend-mode:difference}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:26px;letter-spacing:.14em;display:flex;align-items:baseline;gap:8px;color:#fff}
+.brand b{font-weight:500}
+.brand i{font-family:var(--script);font-style:normal;font-size:28px;letter-spacing:0}
+.navlinks{display:flex;gap:34px;list-style:none}
+.navlinks a{font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;opacity:.85;transition:.3s}
+.navlinks a:hover{opacity:1}
+.nav .pill{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;border:1px solid #fff;padding:11px 20px;border-radius:0}
+@media(max-width:880px){.navlinks{display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:16px 30px;transition:.35s;border:1px solid currentColor}
+.btn.solid{background:var(--rose);border-color:var(--rose);color:#fff}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink)}
+.btn.ghost-d{color:var(--ink)}
+.btn.ghost-d:hover{background:var(--ink);color:var(--paper)}
+.btn.ghost-l{color:var(--cream)}
+.btn.ghost-l:hover{background:var(--cream);color:var(--ink)}
+
+/* hero */
+.hero{background:var(--ink-2);color:var(--cream);min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;padding-bottom:54px}
+.hero-img{position:absolute;top:0;right:0;width:46%;height:100%;z-index:1}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink-2),transparent 35%),linear-gradient(0deg,var(--ink-2),transparent 30%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero-top{position:absolute;top:150px;left:44px;z-index:2}
+.hero-top .mono{color:var(--blush)}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(64px,13vw,210px);line-height:.84;letter-spacing:-.02em;margin:0}
+.hero h1 .l2{display:block;padding-left:.5em}
+.hero h1 em{font-style:italic;color:var(--blush)}
+.hero h1 .sc{font-family:var(--script);font-style:normal;color:var(--petal);font-size:.62em;letter-spacing:0}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:40px;gap:30px;flex-wrap:wrap}
+.hero-foot p{max-width:40ch;color:rgba(244,236,221,.78);font-size:16px;line-height:1.7}
+@media(max-width:880px){.hero-img{width:100%;opacity:.4}.hero-top{top:120px}}
+
+/* ticker */
+.ticker{background:var(--rose);color:#fff;overflow:hidden;white-space:nowrap;padding:16px 0;border-top:1px solid rgba(255,255,255,.2)}
+.ticker .t{display:inline-block;animation:tk 28s linear infinite}
+.ticker span{font-family:var(--serif);font-style:italic;font-size:26px;padding:0 30px}
+.ticker b{font-family:var(--sans);font-weight:300;font-size:14px;letter-spacing:.1em}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* about — sticky split */
+.about{display:grid;grid-template-columns:1fr 1fr}
+.about-media{position:relative;min-height:100vh}
+.about-media img{position:sticky;top:0;width:100%;height:100vh;object-fit:cover}
+.about-body{padding:130px 70px 130px 60px;display:flex;flex-direction:column;justify-content:center}
+.about-body .mono{color:var(--rose)}
+.about-body h2{font-family:var(--serif);font-weight:300;font-size:clamp(38px,4.6vw,68px);line-height:1.02;margin:22px 0 28px}
+.about-body h2 em{font-style:italic;color:var(--rose)}
+.about-body p{color:#5b525f;font-size:17px;line-height:1.85;margin-bottom:20px;max-width:46ch}
+.about-num{display:flex;gap:54px;margin-top:30px}
+.about-num b{font-family:var(--serif);font-size:50px;color:var(--rose);font-weight:400;display:block;line-height:1}
+.about-num span{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:8px}
+@media(max-width:880px){.about{grid-template-columns:1fr}.about-media{min-height:60vh}.about-media img{position:relative;height:60vh}.about-body{padding:70px 44px}}
+
+/* services index */
+.services{background:var(--ink);color:var(--cream);padding:130px 0}
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px;gap:30px;flex-wrap:wrap}
+.svc-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,6vw,96px);line-height:.95}
+.svc-head h2 em{font-style:italic;color:var(--blush)}
+.svc-head .mono{color:var(--blush)}
+.svc-idx{border-top:1px solid var(--line-d)}
+.svc-item{display:grid;grid-template-columns:80px 1fr 1.4fr 200px;gap:30px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line-d);transition:.4s;position:relative;cursor:pointer}
+.svc-item .pic{position:absolute;right:230px;top:50%;transform:translateY(-50%) scale(.7);width:160px;height:200px;object-fit:cover;opacity:0;pointer-events:none;transition:.5s cubic-bezier(.2,.7,.2,1);z-index:3}
+.svc-item:hover{padding-left:18px;background:rgba(234,200,209,.04)}
+.svc-item:hover .pic{opacity:1;transform:translateY(-50%) scale(1) rotate(-3deg)}
+.svc-item:hover h3{color:var(--blush)}
+.svc-item .n{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--blush)}
+.svc-item h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,40px);line-height:1;transition:.3s}
+.svc-item p{color:rgba(244,236,221,.65);font-size:15px;line-height:1.6}
+.svc-item .ar{justify-self:end;font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blush);opacity:0;transition:.4s}
+.svc-item:hover .ar{opacity:1}
+@media(max-width:880px){.svc-item{grid-template-columns:50px 1fr;gap:14px}.svc-item p,.svc-item .ar,.svc-item .pic{display:none}}
+
+/* collection overlap */
+.coll{padding:130px 0}
+.coll-head{text-align:center;max-width:640px;margin:0 auto 64px}
+.coll-head .mono{color:var(--rose)}
+.coll-head h2{font-family:var(--serif);font-weight:300;font-size:clamp(38px,5vw,72px);line-height:1.02;margin-top:18px}
+.coll-head h2 em{font-style:italic;color:var(--rose)}
+.coll-row{display:grid;grid-template-columns:repeat(12,1fr);align-items:center;gap:20px}
+.coll-row figure{overflow:hidden}
+.coll-row img{width:100%;transition:1s ease}
+.coll-row figure:hover img{transform:scale(1.05)}
+.c-a{grid-column:1/6;aspect-ratio:4/5}
+.c-b{grid-column:6/11;aspect-ratio:5/6;margin-top:90px;z-index:2}
+.c-c{grid-column:9/13;aspect-ratio:3/4;margin-top:-60px}
+.coll-cap{grid-column:1/5;margin-top:30px}
+.coll-cap p{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.4;color:#5b525f}
+@media(max-width:760px){.coll-row{grid-template-columns:1fr 1fr}.c-a,.c-b,.c-c,.coll-cap{grid-column:auto;margin:0}.c-b{margin-top:0}}
+
+/* whatsapp */
+.wa{background:var(--cream);padding:120px 0}
+.wa-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;align-items:center;background:var(--ink);color:var(--cream);padding:80px 70px;position:relative;overflow:hidden}
+.wa-inner .script{position:absolute;right:40px;top:10px;font-size:140px;color:rgba(234,200,209,.08);line-height:1}
+.wa-inner .mono{color:var(--blush)}
+.wa-inner h2{font-family:var(--serif);font-weight:300;font-size:clamp(34px,4.4vw,60px);line-height:1.02;margin:18px 0 18px}
+.wa-inner h2 em{font-style:italic;color:var(--blush)}
+.wa-inner p{color:rgba(244,236,221,.72);font-size:17px;line-height:1.7;max-width:42ch}
+.wa-card{background:#25D366;color:#0b2e18;padding:38px;text-align:center;position:relative;z-index:2}
+.wa-card .ic{width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.25);display:grid;place-items:center;margin:0 auto 18px}
+.wa-card .ic svg{width:30px;height:30px;fill:#0b2e18}
+.wa-card b{font-family:var(--serif);font-size:26px;display:block;margin-bottom:6px}
+.wa-card span{font-size:13px;display:block;margin-bottom:22px;opacity:.85;line-height:1.5}
+.wa-card .btn{background:var(--ink);border-color:var(--ink);color:var(--cream);width:100%;justify-content:center}
+.wa-card .btn:hover{background:#0b2e18;border-color:#0b2e18}
+@media(max-width:880px){.wa-inner{grid-template-columns:1fr;gap:36px;padding:54px 34px}}
+
+/* footer */
+footer{background:var(--ink-2);color:var(--cream);padding:90px 0 38px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;padding-bottom:54px;border-bottom:1px solid var(--line-d)}
+.foot-brand .brand{font-size:32px;margin-bottom:18px}
+.foot-brand p{color:rgba(244,236,221,.6);font-size:15px;line-height:1.7;max-width:30ch}
+.foot-col h4{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--blush);margin-bottom:16px}
+.foot-col a,.foot-col p{display:block;color:rgba(244,236,221,.72);font-size:15px;line-height:2;transition:.3s}
+.foot-col a:hover{color:var(--blush)}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-family:var(--sans);font-size:12px;letter-spacing:.08em;color:rgba(244,236,221,.45)}
+.foot-bot .socials{display:flex;gap:18px}
+@media(max-width:880px){.foot-grid{grid-template-columns:1fr 1fr;gap:32px}.foot-bot{flex-direction:column;gap:12px}}
+
+.floatwa{position:fixed;right:26px;bottom:26px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 30px rgba(37,211,102,.4);transition:.3s}
+.floatwa:hover{transform:translateY(-4px) scale(1.05)}
+.floatwa svg{width:30px;height:30px;fill:#fff}
+
+.rv{opacity:0;transform:translateY(30px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><b>EDA's</b> <i>Bouquet</i></a>
+    <ul class="navlinks">
+      <li><a href="#despre">Despre</a></li>
+      <li><a href="#servicii">Servicii</a></li>
+      <li><a href="#colectie">Colecție</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="pill" href="#comanda">Comandă rapidă</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-img"><img src="https://images.unsplash.com/photo-1457089328109-e5d9bd499191?w=1300&q=82" alt="Aranjament floral"></div>
+  <div class="hero-top"><span class="mono">Atelier floral — Onești, jud. Bacău</span></div>
+  <div class="wrap">
+    <h1 class="serif">Florile<span class="l2"><em>tale</em>, <span class="sc">povestea ta</span></span></h1>
+    <div class="hero-foot">
+      <p>Buchete și aranjamente lucrate manual din flori proaspete — pentru nunți, evenimente și fiecare gând bun trimis cuiva drag.</p>
+      <a class="btn ghost-l" href="#comanda">Comandă un buchet →</a>
+    </div>
+  </div>
+</header>
+
+<div class="ticker">
+  <div class="t">
+    <span>Buchete mireasă</span><b>✶</b><span>Nunți</span><b>✶</b><span>Decor evenimente</span><b>✶</b><span>Plante &amp; ghivece</span><b>✶</b><span>Coroane &amp; jerbe</span><b>✶</b><span>Livrare la domiciliu</span><b>✶</b>
+    <span>Buchete mireasă</span><b>✶</b><span>Nunți</span><b>✶</b><span>Decor evenimente</span><b>✶</b><span>Plante &amp; ghivece</span><b>✶</b><span>Coroane &amp; jerbe</span><b>✶</b><span>Livrare la domiciliu</span><b>✶</b>
+  </div>
+</div>
+
+<section class="about" id="despre">
+  <div class="about-media">
+    <img src="https://images.unsplash.com/photo-1487070183336-b863922373d4?w=1100&q=82" alt="Atelier floral EDA's Bouquet">
+  </div>
+  <div class="about-body">
+    <span class="mono">/ Povestea noastră</span>
+    <h2 class="serif">Atelier floral în <em>inima Oneștiului</em></h2>
+    <p>EDA's Bouquet s-a născut dintr-o pasiune simplă: aceea de a așeza emoția într-un buchet. Fiecare aranjament e gândit ca o piesă unică — pentru oamenii și momentele cărora le este dăruit.</p>
+    <p>Lucrăm doar cu flori proaspete, alese în fiecare dimineață, îmbinând tehnica florală cu un ochi pentru detaliu și echilibru.</p>
+    <div class="about-num">
+      <div><b>8</b><span>ani experiență</span></div>
+      <div><b>4000+</b><span>buchete livrate</span></div>
+      <div><b>100%</b><span>flori proaspete</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicii">
+  <div class="wrap">
+    <div class="svc-head rv">
+      <h2 class="serif">Ce <em>facem</em></h2>
+      <span class="mono">06 servicii</span>
+    </div>
+    <div class="svc-idx">
+      <div class="svc-item rv"><span class="n">01</span><h3 class="serif">Buchete mireasă</h3><p>Buchetul tău, gândit în jurul rochiei și al poveștii voastre.</p><span class="ar">Detalii →</span><img class="pic" src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=400&q=80" alt=""></div>
+      <div class="svc-item rv"><span class="n">02</span><h3 class="serif">Aranjamente nuntă</h3><p>Altar, prezidiu, mese și mașină — un fir floral unitar pentru toată ziua.</p><span class="ar">Detalii →</span><img class="pic" src="https://images.unsplash.com/photo-1591886960571-74d43a9d4166?w=400&q=80" alt=""></div>
+      <div class="svc-item rv"><span class="n">03</span><h3 class="serif">Decor evenimente</h3><p>Botezuri, aniversări, evenimente corporate — atmosferă creată cu flori.</p><span class="ar">Detalii →</span><img class="pic" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=400&q=80" alt=""></div>
+      <div class="svc-item rv"><span class="n">04</span><h3 class="serif">Plante &amp; ghivece</h3><p>Plante de interior și aranjamente în ghiveci, alese pentru spațiul tău.</p><span class="ar">Detalii →</span><img class="pic" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80" alt=""></div>
+      <div class="svc-item rv"><span class="n">05</span><h3 class="serif">Coroane &amp; jerbe</h3><p>Aranjamente de condoleanțe, lucrate cu sobrietate și respect.</p><span class="ar">Detalii →</span><img class="pic" src="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&q=80" alt=""></div>
+      <div class="svc-item rv"><span class="n">06</span><h3 class="serif">Livrare la domiciliu</h3><p>Livrăm în Onești și împrejurimi, cu grijă ca florile să ajungă impecabil.</p><span class="ar">Detalii →</span><img class="pic" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400&q=80" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="coll" id="colectie">
+  <div class="wrap">
+    <div class="coll-head rv">
+      <span class="mono">/ Din atelier</span>
+      <h2 class="serif">Colecția de <em>sezon</em></h2>
+    </div>
+    <div class="coll-row rv">
+      <figure class="c-a"><img src="https://images.unsplash.com/photo-1469259943454-aa100abba749?w=800&q=80" alt=""></figure>
+      <figure class="c-b"><img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=800&q=80" alt=""></figure>
+      <figure class="c-c"><img src="https://images.unsplash.com/photo-1502977249166-824b3a8a4d6d?w=700&q=80" alt=""></figure>
+      <div class="coll-cap"><p class="serif">„Fiecare buchet poartă un nume — al celui pentru care a fost făcut.”</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="wa" id="comanda">
+  <div class="wrap">
+    <div class="wa-inner">
+      <span class="script">Bouquet</span>
+      <div class="rv">
+        <span class="mono">/ Comandă rapidă</span>
+        <h2 class="serif">Spune-ne ocazia. <em>Noi ne ocupăm de flori.</em></h2>
+        <p>Scrie-ne pe WhatsApp ce buchet sau aranjament îți dorești, pentru ce moment și pentru când. Îți răspundem repede, cu propuneri și preț.</p>
+      </div>
+      <div class="wa-card rv">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5 0a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2 0-.2 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4 0-.6.3-.2.2-.8.8-.8 2 0 1.1.8 2.2 1 2.4.1.2 1.7 2.6 4.1 3.6 1.5.6 2 .7 2.7.6.4-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1Z"/></svg></div>
+        <b class="serif">+40 7XX XXX XXX</b>
+        <span>Luni–Duminică · 08:00–20:00</span>
+        <a class="btn" href="#">Scrie-ne pe WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top"><b>EDA's</b> <i>Bouquet</i></a>
+        <p>Atelier floral în Onești. Buchete, aranjamente și decor de eveniment, lucrate cu flori proaspete și multă grijă.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Servicii</h4>
+        <a href="#servicii">Buchete mireasă</a>
+        <a href="#servicii">Aranjamente nuntă</a>
+        <a href="#servicii">Decor evenimente</a>
+        <a href="#servicii">Coroane &amp; jerbe</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <p>Str. Exemplu nr. 0<br>Onești, jud. Bacău</p>
+        <a href="tel:+407">+40 7XX XXX XXX</a>
+        <a href="mailto:contact@edasbouquet.ro">contact@edasbouquet.ro</a>
+      </div>
+      <div class="foot-col">
+        <h4>Program</h4>
+        <p>Luni – Vineri · 08–20</p>
+        <p>Sâmbătă · 09–18</p>
+        <p>Duminică · 09–14</p>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Florăria EDA's Bouquet · Onești</span>
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="floatwa" href="#comanda" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5 0a6.6 6.6 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2 0-.2 0-.3 0-.4 0-.1-.5-1.3-.7-1.7-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4 0-.6.3-.2.2-.8.8-.8 2 0 1.1.8 2.2 1 2.4.1.2 1.7 2.6 4.1 3.6 1.5.6 2 .7 2.7.6.4-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1Z"/></svg></a>
+
+<script>
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
